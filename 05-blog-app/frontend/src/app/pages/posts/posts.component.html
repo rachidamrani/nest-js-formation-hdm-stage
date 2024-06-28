@@ -1,0 +1,41 @@
+@if(posts.length > 0) {
+
+<table class="table-fixed w-full text-sm text-left rtl:text-right text-black">
+  <thead>
+    <tr>
+      <th>Post ID</th>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (post of posts; track $index){
+    <tr>
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>
+        <a
+          routerLink="/posts/{{ post.id }}"
+          class="hover:underline hover:text-green-700"
+          >Read more</a
+        >
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+} @else {
+<h3 class="text-red-700 font-semibold">
+  List of posts is empty !
+  <a routerLink="/new-post" class="font-bold text-blue-600">Add new post</a>
+</h3>
+}
+<!-- <ul>
+  <li>
+    <a routerLink="/posts/{{ post.id }}" class="my-3"
+      >{{ post.title }} by 'user'</a
+    >
+  </li>
+  <hr />
+</ul> -->

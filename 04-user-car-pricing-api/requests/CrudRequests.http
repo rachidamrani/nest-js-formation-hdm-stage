@@ -1,0 +1,24 @@
+@host=http://localhost:3000/users
+
+
+### Find a user by id
+GET {{host}}/3
+
+
+### Find all users with a given email
+@email=jane@test.com
+GET {{host}}?email={{email}}
+
+
+### Delete a user by its id
+DELETE  {{host}}/17
+
+
+### Update a user
+PATCH {{host}}/9
+Content-Type: application/json
+
+{
+    "email" : "rachid3alaoui@gmail.com",
+    "password" : "lalzalkzlk9209209"
+}

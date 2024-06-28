@@ -1,0 +1,8 @@
+@if(post != null){
+<h1 class="text-2xl font-bold">{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+
+<button class="base-button bg-red-700" (click)="deletePost()">
+  Delete post
+</button>
+}
