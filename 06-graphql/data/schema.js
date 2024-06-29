@@ -1,11 +1,18 @@
 import { buildSchema } from "graphql";
 
 const schema = buildSchema(`
-        type Query {
-            hello : String
-            countries : [String]
-        }
 
-    `);
+    type Product {
+        id : ID
+        name: String!
+        description: String
+        price : Float
+        soldOut : Boolean
+    }
+    
+    type Query {
+        product : Product
+    }
+`);
 
 export default schema;
