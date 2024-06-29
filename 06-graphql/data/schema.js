@@ -6,8 +6,15 @@ const schema = buildSchema(`
       name: String
       description: String
       price: Float
-      soldOut: Boolean
+      soldOut: Soldout
+      inventory: Int
       stores: [Store!]
+    }
+
+
+    enum Soldout {
+        SOLDOUT
+        ONSALE
     }
   
     type Store {
@@ -23,7 +30,8 @@ const schema = buildSchema(`
       name: String
       description: String
       price: Float
-      soldOut: Boolean
+      soldOut: Soldout
+      inventory: Int
       stores: [StoreInput!]!
     }
   
