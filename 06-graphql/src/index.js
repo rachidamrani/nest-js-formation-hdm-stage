@@ -10,9 +10,10 @@ const root = {
   product: () => ({
     id: 1,
     name: "Product 1",
-    description: "This is product 1",
+    description: "Product 1 description",
     price: 1000,
     soldOut: false,
+    stores: [{ store: "Pasadena" }, { store: "Lost Angeles" }],
   }),
 };
 
