@@ -1,26 +1,17 @@
 import express from "express";
 import schema from "../data/schema";
 import { graphqlHTTP } from "express-graphql";
+import resolvers from "../data/resolvers";
 
 const PORT = 8000;
-
 const app = express();
 
-const root = {
-  product: () => ({
-    id: 1,
-    name: "Product 1",
-    description: "Product 1 description",
-    price: 1000,
-    soldOut: false,
-    stores: [{ store: "Pasadena" }, { store: "Lost Angeles" }],
-  }),
-};
+const root = resolvers;
 
 app.use(
   "/graphql",
   graphqlHTTP({
-    schema,
+    schema: schema,
     rootValue: root,
     graphiql: true,
   })
