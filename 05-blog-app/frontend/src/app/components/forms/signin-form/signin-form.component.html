@@ -1,0 +1,69 @@
+<form [formGroup]="signInForm" (submit)="onSubmit()">
+  <h2 class="formTitle">Sign In</h2>
+  <input
+    type="email"
+    id="email"
+    formControlName="email"
+    placeholder="Email"
+    required
+    [class.invalid]="
+      this.signInForm.get('email')?.invalid &&
+      (this.signInForm.get('email')?.touched ||
+        this.signInForm.get('email')?.dirty ||
+        this.formIsSubmitted)
+    "
+    [class.valid]="
+      this.signInForm.get('email')?.valid &&
+      (this.signInForm.get('email')?.touched ||
+        this.signInForm.get('email')?.dirty ||
+        this.formIsSubmitted)
+    "
+  />
+
+  @if ( this.signInForm.get('email')?.invalid &&
+  (this.signInForm.get('email')?.touched || this.signInForm.get('email')?.dirty
+  || this.formIsSubmitted)) {
+  <span class="text-xs text-red-600">Invalid email</span>
+  }
+
+  <input
+    type="password"
+    id="password"
+    formControlName="password"
+    placeholder="Password"
+    required
+    [class.invalid]="
+      this.signInForm.get('password')?.invalid &&
+      (this.signInForm.get('password')?.touched ||
+        this.signInForm.get('password')?.dirty ||
+        this.formIsSubmitted)
+    "
+    [class.valid]="
+      this.signInForm.get('password')?.valid &&
+      (this.signInForm.get('password')?.touched ||
+        this.signInForm.get('password')?.dirty ||
+        this.formIsSubmitted)
+    "
+  />
+  @if (this.signInForm.get('password')?.invalid &&
+  (this.signInForm.get('password')?.touched ||
+  this.signInForm.get('password')?.dirty || this.formIsSubmitted)) {
+  <span class="text-xs text-red-600">Invalid password</span>
+  }
+
+  <button type="submit" class="base-button bg-blue-950 text-xl self-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 256 256"
+      class="mr-2"
+    >
+      <path
+        fill="currentColor"
+        d="m144.49 136.49l-40 40a12 12 0 0 1-17-17L107 140H24a12 12 0 0 1 0-24h83L87.51 96.49a12 12 0 0 1 17-17l40 40a12 12 0 0 1-.02 17M200 28h-64a12 12 0 0 0 0 24h52v152h-52a12 12 0 0 0 0 24h64a12 12 0 0 0 12-12V40a12 12 0 0 0-12-12"
+      />
+    </svg>
+    Connexion
+  </button>
+</form>

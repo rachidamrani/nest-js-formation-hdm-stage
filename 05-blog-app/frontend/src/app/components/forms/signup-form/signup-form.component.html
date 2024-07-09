@@ -1,0 +1,88 @@
+<form [formGroup]="signUpForm" (submit)="onSubmit()">
+  <div
+    class="alert alert-success text-center"
+    *ngIf="signInIsSuccessful == true"
+  >
+    You are signed in successfully!
+  </div>
+
+  <h2 class="formTitle">Sign up</h2>
+  <!-- Username -->
+  <input
+    type="text"
+    id="username"
+    formControlName="username"
+    placeholder="Username"
+    required
+    [class.invalid]="inputIsInvalid('username')"
+    [class.valid]="inputIsValid('username')"
+  />
+  @if(inputIsInvalid('username')){
+  <span class="text-xs text-red-600">Invalid username</span>
+  }
+  <!-- Email  -->
+  <input
+    type="email"
+    id="email"
+    formControlName="email"
+    placeholder="Email"
+    required
+    [class.invalid]="inputIsInvalid('email')"
+    [class.valid]="inputIsValid('email')"
+  />
+
+  @if(inputIsInvalid('email')){
+  <span class="text-xs text-red-600">Invalid email</span>
+  }
+  <!-- Password -->
+  <input
+    type="password"
+    id="password"
+    formControlName="password"
+    placeholder="Password"
+    required
+    [class.invalid]="inputIsInvalid('password')"
+    [class.valid]="inputIsValid('password')"
+  />
+
+  @if(inputIsInvalid('password')){
+  <span class="text-xs text-red-600">Invalid password</span>
+  }
+  <!-- Confirm Password -->
+  <input
+    type="password"
+    id="confirmPassword"
+    formControlName="confirmPassword"
+    placeholder="Confirm your password"
+    required
+    [class.invalid]="
+      signUpForm.get('confirmPassword')?.value !==
+      signUpForm.get('password')?.value
+    "
+    [class.valid]="
+      signUpForm.get('confirmPassword')?.dirty &&
+      signUpForm.get('password')?.value ===
+        signUpForm.get('confirmPassword')?.value
+    "
+  />
+  @if(signUpForm.get('confirmPassword')?.value !==
+  signUpForm.get('password')?.value){
+  <span class="text-xs text-red-600">Passwords do not match</span>
+  }
+
+  <button type="submit" class="base-button bg-blue-950 text-xl self-center">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      class="mr-2"
+    >
+      <path
+        fill="currentColor"
+        d="M15 14c-2.67 0-8 1.33-8 4v2h16v-2c0-2.67-5.33-4-8-4m-9-4V7H4v3H1v2h3v3h2v-3h3v-2m6 2a4 4 0 0 0 4-4a4 4 0 0 0-4-4a4 4 0 0 0-4 4a4 4 0 0 0 4 4"
+      />
+    </svg>
+    Register
+  </button>
+</form>

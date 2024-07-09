@@ -1,0 +1,28 @@
+@host=http://localhost:3000/users/auth
+
+
+### Create a new User
+POST {{host}}/signup
+Content-Type: application/json
+
+{
+    "email" : "email2@test.com",
+    "password" : "123456"
+}
+
+### Login
+POST {{host}}/signin
+Content-Type: application/json
+
+{
+    "email" : "email2@test.com",
+    "password" : "123456"
+}
+
+
+### Who Am I ? Get the current signed in user 
+GET {{host}}/whoami
+
+
+### Sign out
+POST {{host}}/signout
